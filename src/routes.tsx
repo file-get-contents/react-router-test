@@ -1,10 +1,14 @@
-import { Outlet, Link, useLoaderData } from 'react-router-dom';
+import {
+//  Outlet,
+  Link,
+  useLoaderData,
+} from 'react-router-dom';
 import type { RouteObject } from 'react-router-dom';
 
 function Top(): JSX.Element {
   return (
     <>
-      <h1>top page</h1>
+      <h1>top page. not exist "useLoaderData".</h1>
       <p>
         <Link to="/test1">to test1 page</Link>
       </p>
@@ -15,39 +19,54 @@ function Top(): JSX.Element {
   );
 }
 
+let test :number = 0
+
+
 function Test1(): JSX.Element {
-  //  useLoaderData();
+
+  console.log('test1::top', test)
+  test = 1
+  useLoaderData();
+  console.log('test1::middle', test)
+
 
   return (
     <>
-      <>{console.log('rendering!')}</>
-      <h1>test1 page</h1>
+      <h1>test1 page. exist "useLoaderData".</h1>
       <p>
-        <Link to="/">to top page</Link>
+        <Link to="/">to top page.</Link>
       </p>
       <p>
         <Link to="/test2">to test2 page</Link>
       </p>
+      <>{  console.log('test1::bottom', test)}</>
     </>
   );
 }
 
 function Test2(): JSX.Element {
-  //  useLoaderData();
+
+  console.log('test2::top', test)
+  test = 2
+
+  useLoaderData();
+
+  console.log('test2::middle', test)
 
   return (
     <>
-      <>{console.log('rendering!')}</>
-      <h1>test2 page</h1>
+      <h1>test2 page. exist "useLoaderData".</h1>
       <p>
         <Link to="/">to top page</Link>
       </p>
       <p>
         <Link to="/test1">to test1 page</Link>
       </p>
+      <>{console.log('test2::bottom', test)}</>
     </>
   );
 }
+
 
 export const routes: RouteObject[] = [
   {
@@ -88,5 +107,5 @@ export const routes: RouteObject[] = [
       },
     ],
   },
-];
-*/
+];*/
+
